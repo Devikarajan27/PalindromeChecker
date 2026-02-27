@@ -1,35 +1,42 @@
 public class PalindromeChecker { public static void main(String[] args) {
 
-        // Original String
-        String word = "madam";
+        Scanner sc = new Scanner(System.in);
 
-        // Create Stack
+        System.out.print("Enter a string: ");
+        String str = sc.nextLine();
+
+        // Convert to lowercase to ignore case difference
+        str = str.toLowerCase();
+
         Stack<Character> stack = new Stack<>();
+        Queue<Character> queue = new LinkedList<>();
 
-        // Push characters into stack
-        for (int i = 0; i < word.length(); i++) {
-            stack.push(word.charAt(i));
+        // Insert characters into stack and queue
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+
+            // Ignore spaces
+            if (ch != ' ') {
+                stack.push(ch);
+                queue.add(ch);
+            }
         }
 
         boolean isPalindrome = true;
 
-        // Pop and compare
-        for (int i = 0; i < word.length(); i++) {
-            char poppedChar = stack.pop();
-
-            if (word.charAt(i) != poppedChar) {
+        // Compare stack and queue
+        while (!stack.isEmpty()) {
+            if (!stack.pop().equals(queue.remove())) {
                 isPalindrome = false;
                 break;
             }
         }
 
-        // Print result
-        if (isPalindrome) {
-            System.out.println(word + " is a Palindrome.");
-        } else {
-            System.out.println(word + " is NOT a Palindrome.");
-        }
+        if (isPalindrome)
+            System.out.println("Palindrome");
+        else
+            System.out.println("Not Palindrome");
 
-        System.out.println("Program Ended.");
+        sc.close();
     }
 }
