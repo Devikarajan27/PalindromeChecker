@@ -1,38 +1,35 @@
-public class PalindromeChecker {    public static void main(String[] args) {
-
+public class PalindromeChecker { public static void main(String[] args) {
 
         // Original String
-        String word = "radar";
+        String word = "madam";
 
-        // Convert string to character array
-        char[] characters = word.toCharArray();
+        // Create Stack
+        Stack<Character> stack = new Stack<>();
 
-        // Two-pointer technique
-        int start = 0;
-        int end = characters.length - 1;
+        // Push characters into stack
+        for (int i = 0; i < word.length(); i++) {
+            stack.push(word.charAt(i));
+        }
 
         boolean isPalindrome = true;
 
-        while (start < end) {
+        // Pop and compare
+        for (int i = 0; i < word.length(); i++) {
+            char poppedChar = stack.pop();
 
-            if (characters[start] != characters[end]) {
+            if (word.charAt(i) != poppedChar) {
                 isPalindrome = false;
                 break;
             }
-
-            start++;
-            end--;
         }
 
-        // Display result
+        // Print result
         if (isPalindrome) {
             System.out.println(word + " is a Palindrome.");
         } else {
             System.out.println(word + " is NOT a Palindrome.");
         }
 
-        System.out.println("Program Completed.");
+        System.out.println("Program Ended.");
     }
-    }
- 
-
+}
