@@ -1,24 +1,24 @@
-public class PalindromeChecker {
-       public static void main(String[] args) {
+public class PalindromeChecker {    public static void main(String[] args) {
 
-        // Hardcoded string (String Literal)
-        String word = "madam";
+        // Original String
+        String original = "level";
 
-        // Reverse the string
+        // Reversed String
         String reversed = "";
 
-        for (int i = word.length() - 1; i >= 0; i--) {
-            reversed = reversed + word.charAt(i);
+        // Reverse using for loop
+        for (int i = original.length() - 1; i >= 0; i--) {
+            reversed = reversed + original.charAt(i);
         }
 
-        // Check if palindrome using if-else
-        if (word.equals(reversed)) {
-            System.out.println(word + " is a Palindrome.");
+        // Compare original and reversed
+        if (original.equals(reversed)) {
+            System.out.println(original + " is a Palindrome.");
         } else {
-            System.out.println(word + " is NOT a Palindrome.");
+            System.out.println(original + " is NOT a Palindrome.");
         }
 
-        System.out.println("Program Ended.");
+        System.out.println("Program Finished.");
     }
 
       
