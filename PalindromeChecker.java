@@ -1,19 +1,39 @@
 import java.util.LinkedList;
 
-public class PalindromeChecker {  public static void main(String[] args) {
-        String input = "A man a plan a canal Panama";
-        String normalized = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+public class PalindromeChecker { public boolean checkPalindrome(String input) {
 
-        boolean isPalindrome = true;
+        input = input.replaceAll("\\s+", "").toLowerCase();
 
-        for (int i = 0; i < normalized.length() / 2; i++) {
-            if (normalized.charAt(i) != normalized.charAt(normalized.length() - 1 - i)) {
-                isPalindrome = false;
-                break;
+        int left = 0;
+        int right = input.length() - 1;
+
+        while (left < right) {
+            if (input.charAt(left) != input.charAt(right)) {
+                return false;
             }
+            left++;
+            right--;
         }
 
-        System.out.println("Input : " + input);
-        System.out.println("Is Palindrome? : " + isPalindrome);
+        return true;
+    }
+}
+
+// ONLY ONE public class (same as file name)
+public class UseCase11PalindromeCheckerApp {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Input : ");
+        String input = sc.nextLine();
+
+        PalindromeChecker checker = new PalindromeChecker();
+        boolean result = checker.checkPalindrome(input);
+
+        System.out.println("Is Palindrome? : " + result);
+
+        sc.close();
     }
 }
